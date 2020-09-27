@@ -1,0 +1,42 @@
+<div class="tab__container">
+  <tabset type="pills" #Tabset>
+    <tab
+      *ngFor="let tab of tabs"
+      [active]="tab.active"
+      (selectTab)="changeTab(tab.component)"
+    >
+      <ng-template tabHeading
+        ><i ngClass="{{ tab.icon }}"></i>{{ tab.tabName }}</ng-template
+      >
+    </tab>
+  </tabset>
+
+  <accordion [isAnimated]="true">
+    <accordion-group
+      [isOpen]="isContentOpen"
+      (click)="isContentOpen = !isContentOpen"
+    >
+      <h5 accordion-heading>
+        <i class="fa fa-user-circle-o fa-lg"></i>
+        <i *ngIf="isContentOpen" class="fa fa-caret-up arrow"></i>
+        <i *ngIf="!isContentOpen" class="fa fa-caret-down arrow"></i>
+      </h5>
+
+      <div class="user-details">
+        <div><i class="fa fa-info"></i>{{ userDetails.userName }}</div>
+        <div>
+          <i class="fa fa-map-marker"></i>{{ userDetails.userLocation }}
+        </div>
+      </div>
+    </accordion-group>
+  </accordion>
+</div>
+<app-toolbar></app-toolbar>
+<div class="tab__data">
+  <app-home *ngIf="activeTab === 'home'"></app-home>
+  <app-chart *ngIf="activeTab === 'chart'"></app-chart>
+  <app-contact
+    (backToHome)="backToHome()"
+    *ngIf="activeTab === 'contact'"
+  ></app-contact>
+</div>

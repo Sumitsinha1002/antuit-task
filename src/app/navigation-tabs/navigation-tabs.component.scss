@@ -1,0 +1,49 @@
+@import "../../vars.scss";
+
+.tab__container {
+  padding: 0 20px;
+  border-bottom: 1px solid map-get($color-palette, ati-grey);
+  display: flex;
+  height: 70px;
+  align-items: center;
+  & .nav-link.active {
+    font-weight: bold;
+    border-bottom: 4px solid;
+    background-color: map-get($color-palette, ati-white);
+    color: map-get($color-palette, ati-black);
+    border-radius: 0;
+  }
+  & .nav-link {
+    color: map-get($color-palette, ati-black);
+  }
+  & .icon {
+    margin-right: 10px;
+  }
+
+  & .card-header {
+    background-color: map-get($color-palette, ati-white);
+    border: none;
+  }
+
+  & .panel-default {
+    border: none;
+  }
+
+  & .panel-group {
+    margin-left: auto;
+    border: 1px solid;
+  }
+
+  & .arrow {
+    margin-left: 10px;
+  }
+
+  & .user-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .card-body {
+    padding: 0 10px;
+  }
+}

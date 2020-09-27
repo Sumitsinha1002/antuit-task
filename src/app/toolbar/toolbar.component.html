@@ -1,0 +1,71 @@
+<div class="toolbar__container">
+  <div class="toolbar__pagination">
+    <i
+      class="fa enabled fa-lg fa-arrow-left"
+      (click)="index !== 0 && setVisibleItem(-1)"
+    ></i>
+    <span class="current-page">{{ index + 1 }} / {{ sampleItems.length }}</span>
+    <i
+      class="fa enabled fa-lg fa-arrow-right"
+      (click)="index !== sampleItems.length - 1 && setVisibleItem(1)"
+    ></i>
+  </div>
+
+  <div class="toolbar__sample-data">
+    <div class="header">{{ visibleItem.header }}</div>
+    <div class="sub-header">
+      <span>{{ visibleItem.subHeader + "  *  " }}</span>
+      <span>{{ visibleItem.detail }}</span>
+    </div>
+  </div>
+  <div
+    *ngFor="let toolbarIcon of toolbarIcons"
+    (click)="
+      toolbarIcon.count = toolbarIcon.count === 3 ? 0 : toolbarIcon.count + 1
+    "
+    class="toolbar__action"
+  >
+    <div class="toolbar__action-icons" *ngIf="toolbarIcon.count === 0">
+      <span>{{ toolbarIcon.title }}</span>
+      <i class="fa enabled fa-lg" ngClass="{{ 'fa-' + toolbarIcon.icon }}"></i>
+    </div>
+    <div class="toolbar__action-icons" *ngIf="toolbarIcon.count === 1">
+      <span>{{ toolbarIcon.title }}</span>
+      <i class="fa selected fa-lg" ngClass="{{ 'fa-' + toolbarIcon.icon }}"></i>
+    </div>
+    <div class="toolbar__action-icons" *ngIf="toolbarIcon.count === 2">
+      <span>{{ toolbarIcon.title }}</span>
+      <span class="fa-stack selected">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i
+          class="fa fa-stack-1x fa-inverse"
+          ngClass="{{ 'fa-' + toolbarIcon.icon }}"
+        ></i>
+      </span>
+    </div>
+    <div class="toolbar__action-icons" *ngIf="toolbarIcon.count === 3">
+      <span>{{ toolbarIcon.title }}</span>
+      <i class="fa disabled fa-lg" ngClass="{{ 'fa-' + toolbarIcon.icon }}"></i>
+    </div>
+    <div
+      class="toolbar__action-icons"
+      *ngIf="toolbarIcon.icon.split(',').length > 1"
+    >
+      <span>{{ toolbarIcon.title }}</span>
+      <div class="multi-icons">
+        <i
+          class="fa disabled fa-lg"
+          ngClass="{{ 'fa-' + toolbarIcon.icon.split(',')[0] }}"
+        ></i>
+        <i
+          class="fa disabled fa-lg"
+          ngClass="{{ 'fa-' + toolbarIcon.icon.split(',')[1] }}"
+        ></i>
+        <i
+          class="fa disabled fa-lg"
+          ngClass="{{ 'fa-' + toolbarIcon.icon.split(',')[2] }}"
+        ></i>
+      </div>
+    </div>
+  </div>
+</div>

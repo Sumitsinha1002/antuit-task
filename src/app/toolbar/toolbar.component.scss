@@ -1,0 +1,75 @@
+@import "../../vars.scss";
+.toolbar {
+  &__container {
+    display: flex;
+    height: 80px;
+    padding: 0 20px;
+    border-bottom: 1px solid map-get($color-palette, ati-grey);
+    & .selected {
+      color: map-get($color-palette, ati-secondary);
+      bottom: 5px;
+    }
+
+    & .disabled {
+      color: map-get($color-palette, ati-grey);
+    }
+
+    & .fa {
+      cursor: pointer;
+    }
+  }
+
+  &__action {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+    line-height: 45px;
+    border-right: 1px solid map-get($color-palette, ati-grey);
+    padding-right: 10px;
+    font-size: 0.7em;
+
+    &-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    & .multi-icons {
+      display: flex;
+
+      & .fa {
+        margin: 0 10px;
+        color: black;
+      }
+    }
+  }
+
+  &__pagination {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 10%;
+    line-height: 80px;
+    border-right: 1px solid;
+
+    & .current-page {
+      margin: 0 10px;
+    }
+  }
+  &__sample-data {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+    margin-left: 20px;
+    line-height: 40px;
+
+    & .header {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    & .sub-header {
+      font-size: 0.7em;
+      font-style: italic;
+    }
+  }
+}
